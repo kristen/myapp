@@ -14,15 +14,16 @@ defmodule Myapp.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger]
+      extra_applications: [:logger],
+      mod: {Myapp, []}
     ]
   end
 
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:cowboy, "~> 2.3"},
-      {:plug, "~> 1.5"},
+      {:cowboy, "~> 1.1"},
+      {:plug, "~> 1.3"},
       {:earmark, "~> 1.2", only: :dev},
       {:ex_doc, "~> 0.18.3", only: :dev},
       # {:dep_from_hexpm, "~> 0.3.0"},
