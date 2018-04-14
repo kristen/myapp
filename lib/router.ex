@@ -30,6 +30,15 @@ defmodule Myapp.Router do
             |> halt
     end
 
+    get "/:id" do
+        query_params = Plug.Conn.fetch_query_params(conn)
+        id = query_params.params["id"] || 1
+        character = Myapp.ApiHandler.get_character(id)
+        conn
+            |> put_resp_content_type("application/json")
+            |> send_resp(200, character)
+    end
+
     match _ do
         conn
             |> send_resp(404, "Not found")
